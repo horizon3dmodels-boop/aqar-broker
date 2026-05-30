@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { supabase } from "@/lib/supabaseClient"; // تم إضافة الاستيراد
+import { supabase } from "@/lib/supabaseClient";
 
 export default function AdminSettings() {
   const [activeTab, setActiveTab] = useState("general");
@@ -234,8 +234,8 @@ export default function AdminSettings() {
                   {[{ label: "اللون الرئيسي", key: "primaryColor" }, { label: "اللون الثانوي", key: "secondaryColor" }, { label: "لون التمييز", key: "accentColor" }].map((c) => (
                     <div key={c.key}><label style={labelStyle}>{c.label}</label>
                       <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-                        <input type="color" value={(settings as Record<string, string>)[c.key]} onChange={(e) => handleChange(c.key, e.target.value)} style={{ width: 44, height: 44, border: "2px solid #E5E7EB", borderRadius: 10, cursor: "pointer", padding: 2 }} />
-                        <input value={(settings as Record<string, string>)[c.key]} onChange={(e) => handleChange(c.key, e.target.value)} style={{ ...inputStyle, flex: 1 }} />
+                        <input type="color" value={(settings as Record<string, any>)[c.key]} onChange={(e) => handleChange(c.key, e.target.value)} style={{ width: 44, height: 44, border: "2px solid #E5E7EB", borderRadius: 10, cursor: "pointer", padding: 2 }} />
+                        <input value={(settings as Record<string, any>)[c.key]} onChange={(e) => handleChange(c.key, e.target.value)} style={{ ...inputStyle, flex: 1 }} />
                       </div>
                     </div>
                   ))}
