@@ -77,10 +77,10 @@ export default function ProjectDetailPage() {
       <div style={{ position: "relative", height: 420, overflow: "hidden" }}>
         <img src={project.gallery?.[0]?.url || project.img || 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80'} alt={project.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(15,23,42,0.85) 100%)" }} />
-        <div style={{ position: "absolute", inset: 0, padding: "32px 24px", display: "flex", flexTriangle: "column", flexDirection: "column", justifyContent: "flex-end", maxWidth: 1100, margin: "0 auto", left: 0, right: 0 }}>
+        <div style={{ position: "absolute", inset: 0, padding: "32px 24px", display: "flex", flexDirection: "column", justifyContent: "flex-end", maxWidth: 1100, margin: "0 auto", left: 0, right: 0 }}>
 
           {/* Breadcrumb */}
-          <div style={{ display: "flex", gap: 8, fontSize: 13, color: "rgba(255,255,255,0.6)", marginBottom: 16 }}>
+          <div style={{ position: "relative", display: "flex", gap: 8, fontSize: 13, color: "rgba(255,255,255,0.6)", marginBottom: 16, zIndex: 10 }}>
             <Link href="/" style={{ color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>الرئيسية</Link>
             <span>›</span>
             <Link href="/projects" style={{ color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>المشاريع</Link>
@@ -89,7 +89,7 @@ export default function ProjectDetailPage() {
           </div>
 
           <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
-            <span style={{ background: "#F59E0B", color: "#fff", fontSize: 11, fontWeght: 800, padding: "3px 12px", borderRadius: 20 }}>⚡ {project.status}</span>
+            <span style={{ background: "#F59E0B", color: "#fff", fontSize: 11, fontWeight: 800, padding: "3px 12px", borderRadius: 20 }}>⚡ {project.status}</span>
             <span style={{ background: "rgba(255,255,255,0.2)", color: "#fff", fontSize: 11, fontWeight: 700, padding: "3px 12px", borderRadius: 20 }}>{project.type}</span>
             <span style={{ background: "rgba(37,99,235,0.8)", color: "#fff", fontSize: 11, fontWeight: 700, padding: "3px 12px", borderRadius: 20 }}>🖥️ محاكاة معمارية 3D</span>
           </div>
@@ -245,7 +245,7 @@ export default function ProjectDetailPage() {
           </div>
 
           {/* أزرار المشاركة */}
-          <div style={{ background: "#fff", borderRadius: 20, padding: "20px", border: "1px solid #F0F0F0" }}>  <p style={{ fontSize: 13, fontWeight: 700, color: "#374151", marginBottom: 12 }}>شارك المشروع</p>  <div style={{ display: "flex", gap: 8 }}>    <a href={`https://wa.me/?text=${encodeURIComponent(project.name + ' ' + window.location.href)}`} target="_blank" style={{ flex: 1, background: "#25D366", color: "#fff", borderRadius: 10, padding: "10px", textAlign: "center", textDecoration: "none", fontSize: 12, fontWeight: 700 }}>واتساب</a>    <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(project.name)}&url=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}`} target="_blank" style={{ flex: 1, background: "#000", color: "#fff", borderRadius: 10, padding: "10px", textAlign: "center", textDecoration: "none", fontSize: 12, fontWeight: 700 }}>X</a>    <button onClick={() => navigator.clipboard.writeText(window.location.href)} style={{ flex: 1, background: "#F3F4F6", color: "#374151", border: "none", borderRadius: 10, padding: "10px", fontSize: 12, fontWeight: 700, cursor: "pointer" }}>نسخ الرابط</button>  </div></div>
+          <div style={{ background: "#fff", borderRadius: 20, padding: "20px", border: "1px solid #F0F0F0" }}> <p style={{ fontSize: 13, fontWeight: 700, color: "#374151", marginBottom: 12 }}>شارك المشروع</p> <div style={{ display: "flex", gap: 8 }}>    <a href={`https://wa.me/?text=${encodeURIComponent(project.name + ' ' + window.location.href)}`} target="_blank" style={{ flex: 1, background: "#25D366", color: "#fff", borderRadius: 10, padding: "10px", textAlign: "center", textDecoration: "none", fontSize: 12, fontWeight: 700 }}>واتساب</a>    <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(project.name)}&url=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}`} target="_blank" style={{ flex: 1, background: "#000", color: "#fff", borderRadius: 10, padding: "10px", textAlign: "center", textDecoration: "none", fontSize: 12, fontWeight: 700 }}>X</a>    <button onClick={() => navigator.clipboard.writeText(window.location.href)} style={{ flex: 1, background: "#F3F4F6", color: "#374151", border: "none", borderRadius: 10, padding: "10px", fontSize: 12, fontWeight: 700, cursor: "pointer" }}>نسخ الرابط</button>  </div></div>
 
           {/* Contact Form */}
           <div style={{ background: "#0f172a", borderRadius: 24, padding: "28px", color: "#fff" }}>
