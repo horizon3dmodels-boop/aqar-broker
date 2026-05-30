@@ -137,7 +137,7 @@ export default function ProjectDetailPage() {
               <div style={{ background: "#fff", borderRadius: 20, padding: "28px", border: "1px solid #F0F0F0" }}>
                 <h2 style={{ fontSize: 18, fontWeight: 800, color: "#0f172a", marginBottom: 18 }}>المرافق والخدمات</h2>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 10 }}>
-                  {project.amenities.map((a, i) => (
+                  {project.amenities.map((a: string, i: number) => (
                     <div key={i} style={{ background: "#F8F9FB", borderRadius: 12, padding: "12px 10px", textAlign: "center", fontSize: 12, color: "#374151", fontWeight: 600 }}>{a}</div>
                   ))}
                 </div>
