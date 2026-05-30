@@ -114,7 +114,7 @@ export default function AdminSettings() {
 
       {/* Save Button */}
       <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 20 }}>
-        <button onClick={handleSave} style={{ background: "#16a34a", color: "#fff", border: "none", borderRadius: 12, padding: "10px 24px", fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "'Cairo', sans-serif", boxShadow: "0 4px 12px rgba(22,163,74,0.3)" }}>
+        <button onClick={handleSave} style={{ background: "#16a34a", color: "#fff", border: "none", borderRadius: 12, padding: "10px 24px", fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "'Cairo', sans-serif", boxShadow: "0 4px 12px rgba(2,132,199,0.3)" }}>
           {saved ? "✅ تم الحفظ!" : "💾 حفظ التغييرات"}
         </button>
       </div>
@@ -176,7 +176,7 @@ export default function AdminSettings() {
                           </div>
                           <span style={{ fontSize: 12, color: "#6B7280" }}>{item.desc}</span>
                         </div>
-                        <ToggleSwitch checked={(settings as any)[item.key]} onChange={() => handleChange(item.key, !(settings as any)[item.key])} />
+                        <ToggleSwitch checked={(settings as Record<string, any>)[item.key]} onChange={() => handleChange(item.key, !(settings as Record<string, any>)[item.key])} />
                       </div>
                     ))}
                   </div>
@@ -198,7 +198,7 @@ export default function AdminSettings() {
                           <div style={{ fontSize: 14, fontWeight: 700, color: "#0f172a", marginBottom: 3 }}>{item.label}</div>
                           <div style={{ fontSize: 12, color: "#6B7280" }}>{item.desc}</div>
                         </div>
-                        <ToggleSwitch checked={(settings as any)[item.key]} onChange={() => handleChange(item.key, !(settings as any)[item.key])} />
+                        <ToggleSwitch checked={(settings as Record<string, any>)[item.key]} onChange={() => handleChange(item.key, !(settings as Record<string, any>)[item.key])} />
                       </div>
                     ))}
                   </div>
@@ -219,7 +219,7 @@ export default function AdminSettings() {
                           <div style={{ fontSize: 14, fontWeight: 700, color: "#0f172a", marginBottom: 3 }}>{item.label}</div>
                           <div style={{ fontSize: 12, color: "#6B7280" }}>{item.desc}</div>
                         </div>
-                        <ToggleSwitch checked={(settings as any)[item.key]} onChange={() => handleChange(item.key, !(settings as any)[item.key])} />
+                        <ToggleSwitch checked={(settings as Record<string, any>)[item.key]} onChange={() => handleChange(item.key, !(settings as Record<string, any>)[item.key])} />
                       </div>
                     ))}
                   </div>
@@ -268,7 +268,7 @@ export default function AdminSettings() {
                   ].map((item) => (
                     <div key={item.key} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "14px 16px", background: "#F8F9FB", borderRadius: 14 }}>
                       <span style={{ fontSize: 14, fontWeight: 600, color: "#374151" }}>{item.label}</span>
-                      <ToggleSwitch checked={(settings as Record<string, boolean>)[item.key]} onChange={() => handleChange(item.key, !(settings as Record<string, boolean>)[item.key])} />
+                      <ToggleSwitch checked={(settings as Record<string, any>)[item.key]} onChange={() => handleChange(item.key, !(settings as Record<string, any>)[item.key])} />
                     </div>
                   ))}
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginTop: 8 }}>
@@ -290,7 +290,7 @@ export default function AdminSettings() {
                   ].map((item) => (
                     <div key={item.key} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "14px 16px", background: "#F8F9FB", borderRadius: 14 }}>
                       <span style={{ fontSize: 14, fontWeight: 600, color: "#374151" }}>{item.label}</span>
-                      <ToggleSwitch checked={(settings as Record<string, boolean>)[item.key]} onChange={() => handleChange(item.key, !(settings as Record<string, boolean>)[item.key])} />
+                      <ToggleSwitch checked={(settings as Record<string, any>)[item.key]} onChange={() => handleChange(item.key, !(settings as Record<string, any>)[item.key])} />
                     </div>
                   ))}
                   <div><label style={labelStyle}>نموذج AI</label>
@@ -320,7 +320,7 @@ export default function AdminSettings() {
                   {[{ label: "تفعيل مدى", key: "enableMada" }, { label: "تفعيل Apple Pay", key: "enableApplePay" }, { label: "تفعيل سداد", key: "enableSADAD" }].map((item) => (
                     <div key={item.key} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "14px 16px", background: "#F8F9FB", borderRadius: 14 }}>
                       <span style={{ fontSize: 14, fontWeight: 600, color: "#374151" }}>{item.label}</span>
-                      <ToggleSwitch checked={(settings as Record<string, boolean>)[item.key]} onChange={() => handleChange(item.key, !(settings as Record<string, boolean>)[item.key])} />
+                      <ToggleSwitch checked={(settings as Record<string, any>)[item.key]} onChange={() => handleChange(item.key, !(settings as Record<string, any>)[item.key])} />
                     </div>
                   ))}
                 </div>
