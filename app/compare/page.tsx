@@ -1,9 +1,9 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 
-export default function ComparePage() {
+function CompareContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [properties, setProperties] = useState<any[]>([]);
@@ -238,5 +238,13 @@ export default function ComparePage() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function ComparePage() {
+  return (
+    <Suspense fallback={<div style={{ textAlign: "center", padding: "100px", fontFamily: "'Cairo', sans-serif" }}>جاري التحميل...</div>}>
+      <CompareContent />
+    </Suspense>
   );
 }
