@@ -94,8 +94,8 @@ function MapPicker({ onSelect, city }: { onSelect: (lat: number, lng: number, ad
       } catch (e) {}
 
       getLocationByIP().then((loc) => {
-        if (loc && loc.latitude && loc.longitude) {
-          mapRef.current?.flyTo({ center: [loc.longitude, loc.latitude], zoom: 14 });
+        if (loc && loc.lat && loc.lng) {
+          mapRef.current?.flyTo({ center: [loc.lng, loc.lat], zoom: 14 });
         }
       }).catch(() => {});
 
