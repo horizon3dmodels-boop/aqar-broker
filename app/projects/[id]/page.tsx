@@ -191,7 +191,7 @@ export default function ProjectDetailPage() {
                 </div>
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(6,1fr)", gap: 8 }}>
-                {project.gallery.map((g, i) => (
+                {project.gallery.map((g: any, i: number) => (
                   <button key={i} className="thumb" onClick={() => setSelectedImg(g.url)} style={{ borderRadius: 10, overflow: "hidden", height: 72, border: `2px solid ${selectedImg === g.url ? "#2563EB" : "transparent"}`, opacity: selectedImg === g.url ? 1 : 0.65, cursor: "pointer", padding: 0 }}>
                     <img src={g.url} alt={g.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                   </button>
