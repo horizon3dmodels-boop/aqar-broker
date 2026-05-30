@@ -161,7 +161,7 @@ export default function ProjectDetailPage() {
           {/* Units */}
           {activeTab === "units" && (
             <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 16 }}>
-              {project.unitTypes.map((u, i) => (
+              {project.unitTypes.map((u: any, i: number) => (
                 <div key={i} className="unit-card" style={{ background: "#fff", borderRadius: 20, padding: "24px", border: "1px solid #F0F0F0", boxShadow: "0 2px 8px rgba(0,0,0,0.06)" }}>
                   <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 14 }}>
                     <div>
