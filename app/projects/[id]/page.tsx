@@ -207,7 +207,7 @@ export default function ProjectDetailPage() {
               <div style={{ position: "relative" }}>
                 <div style={{ position: "absolute", right: 19, top: 0, bottom: 0, width: 2, background: "#F0F0F0" }} />
                 <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
-                  {project.milestones.map((m, i) => (
+                  {project.milestones.map((m: any, i: number) => (
                     <div key={i} style={{ display: "flex", gap: 20, alignItems: "center", paddingBottom: i < project.milestones.length - 1 ? 28 : 0 }}>
                       <div style={{ width: 40, height: 40, borderRadius: "50%", background: m.done ? "#16a34a" : "#F8F9FB", border: `3px solid ${m.done ? "#16a34a" : "#E5E7EB"}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, zIndex: 1, fontSize: 16, color: m.done ? "#fff" : "#9CA3AF" }}>
                         {m.done ? "✓" : "○"}
