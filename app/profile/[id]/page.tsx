@@ -241,13 +241,13 @@ export default function PublicProfilePage() {
 
         {/* Tabs */}
         <div style={{ display: "flex", gap: 4, background: "#F3F4F6", padding: 4, borderRadius: 12, width: "fit-content", marginBottom: 20 }}>
-          {isContractorOrEngineer ? [
+          {(isContractorOrEngineer ? [
             { key: "projects", label: `🔨 المشاريع (${projects.length})` },
             { key: "reels", label: `🎬 Reels (${reels.length})` },
           ] : [
             { key: "listings", label: `🏠 الإعلانات (${listings.length})` },
             { key: "reels", label: `🎬 Reels (${reels.length})` },
-          ].map(tab => (
+          ] as { key: string; label: string }[]).map(tab => (
             <button key={tab.key} onClick={() => setActiveTab(tab.key as any)}
               style={{
                 padding: "9px 20px", borderRadius: 9, border: "none",
@@ -255,7 +255,7 @@ export default function PublicProfilePage() {
                 background: activeTab === tab.key ? "#2563EB" : "transparent",
                 color: activeTab === tab.key ? "#fff" : "#6B7280",
                 cursor: "pointer"
-              }}>{tab.label}</button>
+              }}> {tab.label} </button>
           ))}
         </div>
 
