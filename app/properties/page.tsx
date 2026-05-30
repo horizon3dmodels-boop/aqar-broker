@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 
@@ -7,7 +7,7 @@ const propertyTypes = ["الكل", "شقة", "فيلا", "دوبلكس", "أرض
 const purposes = ["الكل", "بيع", "إيجار"];
 const sortOptions = ["الأحدث", "السعر: الأقل", "السعر: الأعلى", "المساحة: الأكبر"];
 
-export default function PropertiesPage() {
+function PropertiesContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [properties, setProperties] = useState<any[]>([]);
@@ -56,7 +56,7 @@ export default function PropertiesPage() {
     if (type !== "الكل") query = query.eq("type", type);
     if (purpose !== "الكل") query = query.eq("purpose", purpose);
     if (priceMin) query = query.gte("price", parseFloat(priceMin.replace(/,/g, "")));
-    if (priceMax) query = query.lte("price", parseFloat(priceMax.replace(/,/g, "")));
+    if (priceMax) query = query.lte("price", parseFloat(maxPrice.replace(/,/g, "")));
     if (area) query = query.gte("area", parseFloat(area));
     if (sort === "الأحدث") query = query.order("created_at", { ascending: false });
     else if (sort === "السعر: الأقل") query = query.order("price", { ascending: true });
@@ -281,14 +281,14 @@ export default function PropertiesPage() {
               {filtered.map((p) => (
                 <div key={p.id} className="card-hover"
                   onClick={() => {
-  if (compareList.length > 0 && !compareList.find(x => x.id === p.id)) {
-    if (compareList.length < 4) {
-      setCompareList(prev => [...prev, p]);
-    }
-    return;
-  }
-  router.push(`/properties/${p.id}`);
-}}
+                    if (compareList.length > 0 && !compareList.find(x => x.id === p.id)) {
+                      if (compareList.length < 4) {
+                        setCompareList(prev => [...prev, p]);
+                      }
+                      return;
+                    }
+                    router.push(`/properties/${p.id}`);
+                  }}
                   style={{ background: "#fff", borderRadius: 18, overflow: "hidden", boxShadow: "0 2px 12px rgba(0,0,0,0.07)", border: "1px solid #F0F0F0", cursor: "pointer", display: viewMode === "list" ? "flex" : "block" }}>
 
                   <div style={{ position: "relative", height: viewMode === "grid" ? 190 : 160, width: viewMode === "list" ? 240 : "auto", flexShrink: 0, overflow: "visible" }}>
@@ -429,7 +429,7 @@ export default function PropertiesPage() {
             style={{
               background: compareList.length >= 2 ? "#0284c7" : "#374151",
               color: "#fff", border: "none", borderRadius: 12,
-              padding: "10px 20px", fontSize: 13, fontWeight: 700,
+              padding: "10px 24px", fontSize: 13, fontWeight: 700,
               cursor: compareList.length >= 2 ? "pointer" : "not-allowed",
               fontFamily: "'Cairo', sans-serif"
             }}>
@@ -443,5 +443,13 @@ export default function PropertiesPage() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function PropertiesPage() {
+  return (
+    <Suspense fallback={<div style={{ textAlign: "center", padding: "100px", fontFamily: "'Cairo', sans-serif" }}>جاري التحميل...</div>}>
+      <PropertiesContent />
+    </Suspense>
   );
 }
